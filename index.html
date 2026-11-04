@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Raksha - Smart AI Women Safety Companion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- SCREEN 1: LOGIN / REGISTRATION -->
+    <div id="screen-auth" class="app-screen">
+      <div class="auth-card">
+        <div class="auth-hero-banner">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Women Safety Shield" class="auth-hero-img" />
+          <div class="auth-hero-overlay">
+            <div class="auth-badge"><i class="fa-solid fa-shield-halved"></i> 24/7 Smart Shield</div>
+          </div>
+        </div>
+        
+        <div class="auth-header">
+          <div class="auth-logo"><i class="fa-solid fa-shield-heart"></i></div>
+          <h2>Welcome to RAKSHA</h2>
+          <p>India's Intelligent Safety Network for Women &amp; Children</p>
+        </div>
+
+        <div class="auth-tabs">
+          <button class="auth-tab-btn active" id="tab-btn-register" type="button">Sign Up</button>
+          <button class="auth-tab-btn" id="tab-btn-login" type="button">Sign In</button>
+        </div>
+
+        <form id="form-auth" class="auth-form">
+          <div class="input-group">
+            <label><i class="fa-solid fa-envelope"></i> Mobile Number or Email</label>
+            <input type="text" id="auth-identifier" placeholder="e.g. +91 9876543210 or name@domain.com" required />
+          </div>
+
+          <div class="input-group">
+            <label><i class="fa-solid fa-lock"></i> Password</label>
+            <input type="password" id="auth-password" placeholder="Enter secure password" required />
+          </div>
+
+          <button type="submit" class="btn-primary w-100" id="btn-auth-submit">
+            <span>Continue to Setup Profile</span> <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+
+        <p class="auth-footer-notice"><i class="fa-solid fa-lock"></i> End-to-end encrypted local protection</p>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: PERSONAL DETAILS / ONBOARDING -->
+    <div id="screen-onboarding" class="app-screen hidden">
+      <div class="onboarding-card">
+        <div class="onboarding-header">
+          <h2>Personal Profile &amp; Medical ID</h2>
+          <p>Dispatched automatically during emergency triggers with your GPS location &amp; live route.</p>
+        </div>
+
+        <form id="form-onboarding" class="onboarding-form">
+          <div class="avatar-select-row">
+            <label class="avatar-option"><input type="radio" name="onboard-avatar" value="👩" checked /><span>👩</span></label>
+            <label class="avatar-option"><input type="radio" name="onboard-avatar" value="👧" /><span>👧</span></label>
+            <label class="avatar-option"><input type="radio" name="onboard-avatar" value="🧑" /><span>🧑</span></label>
+            <label class="avatar-option"><input type="radio" name="onboard-avatar" value="🧕" /><span>🧕</span></label>
+          </div>
+
+          <div class="input-group">
+            <label><i class="fa-solid fa-user"></i> Full Name</label>
+            <input type="text" id="onboard-name" placeholder="e.g. Priya Sharma" required />
+          </div>
+
+          <div class="input-row">
+            <div class="input-group">
+              <label><i class="fa-solid fa-cake-candles"></i> Age</label>
+              <input type="number" id="onboard-age" placeholder="22" required />
+            </div>
+            <div class="input-group">
+              <label><i class="fa-solid fa-droplet"></i> Blood Group</label>
+              <select id="onboard-blood">
+                <option value="Unknown">Unknown</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label><i class="fa-solid fa-user-shield"></i> Primary Guardian Name (e.g. Papa / Mom)</label>
+            <input type="text" id="onboard-parent-name" placeholder="e.g. Papa" required />
+          </div>
+
+          <div class="input-group">
+            <label><i class="fa-solid fa-phone"></i> Guardian Phone Number (with Country Code)</label>
+            <input type="tel" id="onboard-parent-phone" placeholder="e.g. +91 9876543210" required />
+          </div>
+
+          <button type="submit" class="btn-primary w-100">
+            <span>Complete Setup &amp; Open Home</span> <i class="fa-solid fa-shield-check"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: MAIN SAFETY DASHBOARD -->
+    <div id="screen-home" class="app-screen hidden">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-icon"><i class="fa-solid fa-shield-heart"></i></div>
+          <div>
+            <h1 class="brand-title">RAKSHA</h1>
+            <p class="brand-tagline">AI Safety Companion</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="btn-quick-profile" class="icon-btn" title="Emergency Profile">
+            <i class="fa-solid fa-id-card-clip"></i>
+          </button>
+          <button id="btn-logout" class="icon-btn" title="Switch Account">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Real-Time Telemetry Bar -->
+      <section class="telemetry-bar">
+        <div class="telemetry-pill">
+          <span class="status-dot green"></span>
+          <span id="telemetry-gps">GPS: Detecting...</span>
+        </div>
+        <div class="telemetry-pill">
+          <i class="fa-solid fa-battery-half text-amber"></i>
+          <span id="telemetry-battery">Batt: Checking...</span>
+        </div>
+        <div class="telemetry-pill">
+          <i class="fa-solid fa-users text-cyan"></i>
+          <span id="telemetry-group">Group: 0</span>
+        </div>
+      </section>
+
+      <main class="main-content">
+        <!-- Big Silent SOS Button -->
+        <section class="sos-card">
+          <div class="sos-wrapper">
+            <button id="btn-sos-trigger" class="sos-button" aria-label="Emergency SOS Panic Button">
+              <span class="sos-pulse"></span>
+              <span class="sos-inner">
+                <i class="fa-solid fa-hand-fist"></i>
+                <span class="sos-text">SOS</span>
+              </span>
+            </button>
+          </div>
+          <div class="sos-info">
+            <h2>Tap for Instant Group &amp; Guardian Alert</h2>
+            <p>Dispatches live coordinates, distance &amp; navigation route to all group members</p>
+          </div>
+        </section>
+
+        <!-- Upgraded AI Assistant -->
+        <section class="ai-assistant-card">
+          <div class="ai-orb-container">
+            <div id="ai-orb" class="ai-orb">
+              <i class="fa-solid fa-microphone"></i>
+            </div>
+          </div>
+          <div class="ai-details">
+            <div class="ai-header-row">
+              <h3>Raksha Smart Voice AI</h3>
+              <span id="ai-badge" class="badge">Tap Orb to Speak</span>
+            </div>
+            <p id="ai-transcription" class="ai-speech-text">Say "Call Papa", "Send location", "Emergency", or "Alert group"</p>
+          </div>
+        </section>
+
+        <!-- Quick Action Grid -->
+        <section class="action-grid">
+          <button id="btn-tile-group" class="action-tile group-tile">
+            <div class="tile-icon text-cyan"><i class="fa-solid fa-users-gear"></i></div>
+            <div class="tile-text">
+              <h4>SOS Group Setup</h4>
+              <p>Broadcast alert to all members</p>
+            </div>
+          </button>
+
+          <button id="btn-tile-location" class="action-tile">
+            <div class="tile-icon text-green"><i class="fa-solid fa-location-arrow"></i></div>
+            <div class="tile-text">
+              <h4>Share Location Now</h4>
+              <p>Direct WhatsApp / SMS share</p>
+            </div>
+          </button>
+
+          <button id="btn-tile-fakecall" class="action-tile">
+            <div class="tile-icon text-amber"><i class="fa-solid fa-phone-volume"></i></div>
+            <div class="tile-text">
+              <h4>Fake Call</h4>
+              <p>Simulate incoming call</p>
+            </div>
+          </button>
+
+          <button id="btn-tile-timer" class="action-tile">
+            <div class="tile-icon text-blue"><i class="fa-solid fa-stopwatch"></i></div>
+            <div class="tile-text">
+              <h4>Safe Walk Timer</h4>
+              <p>Auto-SOS check-in timer</p>
+            </div>
+          </button>
+        </section>
+
+        <!-- Broadcast Preferences -->
+        <section class="settings-card">
+          <div class="section-header">
+            <h3><i class="fa-solid fa-sliders text-cyan"></i> Broadcast Preferences</h3>
+          </div>
+
+          <div class="setting-item">
+            <label class="setting-title"><i class="fa-solid fa-paper-plane text-cyan"></i> Dispatch Channel for Group SOS:</label>
+            <div class="radio-pill-group">
+              <label class="radio-pill">
+                <input type="radio" name="auto-channel" value="whatsapp" checked />
+                <span><i class="fa-brands fa-whatsapp text-green"></i> WhatsApp</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="auto-channel" value="sms" />
+                <span><i class="fa-solid fa-comment-sms text-cyan"></i> Direct SMS</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <!-- Emergency Hotlines -->
+        <section class="hotlines-section">
+          <div class="section-header">
+            <h3>National Emergency Hotlines</h3>
+            <span class="sub-label">Toll-Free 24x7</span>
+          </div>
+          <div class="hotlines-row">
+            <a href="tel:112" class="hotline-chip police">
+              <i class="fa-solid fa-building-shield"></i>
+              <div><strong>112</strong><span>All-in-One Police</span></div>
+            </a>
+            <a href="tel:181" class="hotline-chip women">
+              <i class="fa-solid fa-venus"></i>
+              <div><strong>181</strong><span>Women Helpline</span></div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Guardian Contacts List -->
+        <section class="contacts-section">
+          <div class="section-header">
+            <h3>Emergency Contacts &amp; Group Members</h3>
+            <button id="btn-add-contact" class="btn-text"><i class="fa-solid fa-plus"></i> Add Member</button>
+          </div>
+          <div id="contacts-list" class="contacts-list"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- SOS BROADCAST ACTIVE MODAL -->
+  <div id="modal-sos-active" class="modal-overlay hidden">
+    <div class="active-sos-card">
+      <div class="pulsing-shield"><i class="fa-solid fa-tower-broadcast"></i></div>
+      <h2>DISPATCHING EMERGENCY ALERT</h2>
+      <p class="silent-notice">Live location and distance metrics generated.</p>
+      <div id="sos-active-location" class="sos-details-box">Calculating precise GPS coordinates...</div>
+      
+      <div class="sos-actions-stack">
+        <button id="btn-send-group-now" class="btn-broadcast whatsapp">
+          <i class="fa-solid fa-paper-plane"></i> Broadcast To Group Now
+        </button>
+        <a href="tel:112" class="btn-broadcast call112">
+          <i class="fa-solid fa-phone"></i> Call Emergency 112
+        </a>
+      </div>
+      <button id="btn-stop-sos" class="btn-stop-alert">I Am Safe Now (Dismiss)</button>
+    </div>
+  </div>
+
+  <!-- FAKE CALL MODAL -->
+  <div id="modal-fake-call" class="modal-overlay full-screen hidden">
+    <div class="fake-call-container">
+      <div class="caller-meta">
+        <div class="caller-avatar">👤</div>
+        <h2 id="fake-caller-name">Papa</h2>
+        <p id="fake-caller-status">Incoming Call...</p>
+      </div>
+      <div class="caller-actions" id="call-incoming-buttons">
+        <button id="btn-reject-fake-call" class="call-btn reject"><i class="fa-solid fa-phone-slash"></i></button>
+        <button id="btn-accept-fake-call" class="call-btn accept"><i class="fa-solid fa-phone"></i></button>
+      </div>
+      <div id="call-connected-view" class="call-connected-view hidden">
+        <p class="timer" id="call-duration-timer">00:01</p>
+        <p class="simulated-voice-script">"Beta, where are you right now? I am nearby."</p>
+        <button id="btn-end-fake-call" class="call-btn reject mt-24"><i class="fa-solid fa-phone-slash"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
